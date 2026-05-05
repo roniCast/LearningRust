@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 pub enum CurrentScreen {
     Main,
     Editing,
@@ -13,9 +15,9 @@ pub struct App {
     pub key_input: String,              // the currently being edited json key
     pub value_input: String,            // the currently being edited json value
     pub pairs: HashMap<String, String>, // the representation of the key and value pairs with serde
-                                        // Serialized support
-    pub current_screen: CurrentScreen,  // the current screen the user is looking at, and will later
-                                        // determine what is rendered
+    // Serialized support
+    pub current_screen: CurrentScreen, // the current screen the user is looking at, and will later
+    // determine what is rendered
     pub currently_editing: Option<CurrentlyEditing>, // the optional state containing which of the
                                                      // key or value pair the user is editing. It is
                                                      // an option, because when the user is not
@@ -38,8 +40,8 @@ impl App {
         self.pairs
             .insert(self.key_input.clone(), self.value_input.clone());
         self.key_input = String::new();
-        self.value_input = String::new(),
-        self.currently_editing = None,
+        self.value_input = String::new();
+        self.currently_editing = None;
     }
 
     pub fn toggle_editing(&mut self) {
